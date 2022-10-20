@@ -1,5 +1,5 @@
 # patient_portal
 
-Used GCP 
+Used GCP
 
-iP: 35.239.60.174
+MySQL IP: 35.239.60.174
