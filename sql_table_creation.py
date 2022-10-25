@@ -37,7 +37,7 @@ create table if not exists production_patients (
 """
 
 medications = """
-create table if not exists production_medications (
+create table if not exists medications (
     id int auto_increment,
     med_ndc varchar(255) default null unique,
     med_human_name varchar(255) default null,
