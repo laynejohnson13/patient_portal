@@ -1,7 +1,7 @@
 - screen shot of a ERD of your proposed setup (use either popSQL or mysql work bench)
   - screen shots of you connected to the sql server, performing the following queries:
-    - Query1: show databases (e.g., show databases;)
-    - Query2: all of the tables from your database (e.g., show tables;)
-    - Query3: select * from patient_portal.medications
-    - Query4: select * from patient_portal.treatment_procedures
-    - Query5: select * from patient_portal.conditions
+    - Query1 (Q1): show databases (e.g., show databases;)
+    - Query2 (Q2): all of the tables from your database (e.g., show tables;)
+    - Query3 (Q3): select * from patient_portal.medications
+    - Query4 (Q4): select * from patient_portal.treatment_procedures
+    - Query5 (Q5): select * from patient_portal.conditions

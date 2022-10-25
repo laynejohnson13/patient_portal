@@ -41,3 +41,34 @@ df_fake_patients = pd.DataFrame(fake_patients)
 # drop duplicate mrn
 df_fake_patients = df_fake_patients.drop_duplicates(subset=['mrn'])
 
+
+
+# real icd10 codes
+icd10_codes = pd.read_csv('https://raw.githubusercontent.com/Bobrovskiy/ICD-10-CSV/master/2020/diagnosis.csv')
+list(icd10_codes.columns)
+icd10codesShort = icd10_codes[['CodeWithSeparator', 'ShortDescription']]
+icd10codesShort_1k = icd10codesShort.sample(n=1000, random_state=1)
+# drop duplicates
+icd10codesShort_1k = icd10codesShort_1k.drop_duplicates(
+    subset=['CodeWithSeparator'], keep='first')
+
+
+##real CPT codes
+cpt_codes = pd.read_excel('data/ cpt.xlsx')
+list(cpt_codes.columns)
+
+new_cpt = cpt_codes.rename(columns={'Unnamed: 0': 'Code', 'Unnamed: 1': 'Description'})
+
+new_cpt.to_csv('data/new_cpt_codes.xlsx')
+cpt_codes_sample = cpt_codes.sample(n=1000, random_state=1)
+
+
+
+##inserting fake patients
+fake_patients.to_sql('patients', con=gc_engine,
+                        if_exists='append', index=False)
+
+
+gc_engine = pd.read_sql_query("SELECT * FROM patients", gc_engine)
+
+##inserting fake conditions
