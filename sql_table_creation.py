@@ -66,14 +66,14 @@ create table if not exists treatment_procedures (
 
 
 
-patients_medications = """
-create table if not exists patient_medications (
+patient_medications = """
+create table if not exists patient_medication (
     id int auto_increment,
     mrn varchar(255) default null,
     med_ndc varchar(255) default null,
     PRIMARY KEY (id),
     FOREIGN KEY (mrn) REFERENCES production_patients(mrn) ON DELETE CASCADE,
-    FOREIGN KEY (med_ndc) REFERENCES production_medications(med_ndc) ON DELETE CASCADE
+    FOREIGN KEY (med_ndc) REFERENCES medications(med_ndc) ON DELETE CASCADE
 ); 
 """
 
