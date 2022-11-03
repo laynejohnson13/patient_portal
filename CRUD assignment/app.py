@@ -135,6 +135,50 @@ class Medications(db.Model):
 
 
 
+
+class Patient_treatment_procedures(db.Model):
+    __tablename__ = 'patient_treatment_procedures'
+
+    id = db.Column(db.Integer, primary_key=True)
+    mrn = db.Column(db.String(255), db.ForeignKey('production_patients.mrn'))
+    cpt_code = db.Column(db.String(255), db.ForeignKey('treatment_procedures.cpt_code'))
+
+    # this first function __init__ is to establish the class for python GUI
+    def __init__(self, mrn, cpt_code):
+        self.mrn = mrn
+        self.cpt_code = cpt_code
+
+    # this second function is for the API endpoints to return JSON
+    def to_json(self):
+        return {
+            'id': self.id,
+            'mrn': self.mrn,
+            'cpt_code': self.cpt_code
+        }
+
+
+class Treatment_procedures(db.Model):
+    __tablename__ = 'treatment_procedures'
+
+    id = db.Column(db.Integer, primary_key=True)
+    cpt_code = db.Column(db.String(255))
+    cpt_description = db.Column(db.String(255))
+
+    # this first function __init__ is to establish the class for python GUI
+    def __init__(self, cpt_code, cpt_description):
+        self.cpt_code = cpt_code
+        self.cpt_description = cpt_description
+
+    # this second function is for the API endpoints to return JSON
+    def to_json(self):
+        return {
+            'id': self.id,
+            'cpt_code': self.cpt_code,
+            'cpt_description': self.cpt_description
+        }
+
+
+
 #### BASIC ROUTES WITHOUT DATA PULSL FOR NOW ####
 @app.route('/')
 def index():
@@ -173,4 +217,4 @@ def insert(): # note this function needs to match name in html form action
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=80)
+    app.run(debug=True, host='0.0.0.0', port=8080)
