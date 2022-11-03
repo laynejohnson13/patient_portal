@@ -101,7 +101,7 @@ create table if not exists patient_treatment_procedures (
 
 gc_engine.execute(production_patients)
 gc_engine.execute(medications)
-gc_engine.execute(patients_medications)
+gc_engine.execute(patient_medications)
 gc_engine.execute(conditions)
 gc_engine.execute(patient_conditions)
 gc_engine.execute(treatment_procedures)
