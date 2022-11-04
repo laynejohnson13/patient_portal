@@ -27,18 +27,15 @@ db.init_app(app)
 
 class Patients(db.Model):
     __tablename__ = 'production_patients'
-
     id = db.Column(db.Integer, primary_key=True)
     mrn = db.Column(db.String(255))
     first_name = db.Column(db.String(255))
     last_name = db.Column(db.String(255))
-
     # this first function __init__ is to establish the class for python GUI
     def __init__(self, mrn, first_name, last_name):
         self.mrn = mrn
         self.first_name = first_name
         self.last_name = last_name
-
     # this second function is for the API endpoints to return JSON 
     def to_json(self):
         return {
